@@ -16,8 +16,15 @@ let package = Package(
         .target(
             name: "opus_codec_ios",
             dependencies: [
-                .target(name: "opus")
+                .target(name: "opus"),
+                .target(name: "OpusCtlBridge")
             ]
+        ),
+        .target(
+            name: "OpusCtlBridge",
+            dependencies: [.target(name: "opus")],
+            path: "Sources/OpusCtlBridge",
+            publicHeadersPath: "include"
         ),
         .binaryTarget(
             name: "opus",
